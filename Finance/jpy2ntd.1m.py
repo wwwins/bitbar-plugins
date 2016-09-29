@@ -23,10 +23,10 @@ if (int(time.strftime("%H")) < 9):
 	print ('🈚️')
 	exit()
 
-r = requests.get("http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm")
+r = requests.get("http://rate.bot.com.tw/xrt?Lang=zh-TW")
 doc = html.fromstring(r.text)
-content = doc.cssselect("div.entry-content")
-jpy = content[0][1][9][2].text
+content = doc.cssselect("td.rate-content-cash")
+jpy = content[15].text
 if (float(jpy) < BUY_RATE):
 	color = "red"
 
